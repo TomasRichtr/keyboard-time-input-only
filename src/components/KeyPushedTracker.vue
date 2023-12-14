@@ -1,7 +1,7 @@
 <template>
-  <div v-if="!!lastKeyPressed">
-    <div class="key-pressed-label">Last Key Pressed:</div>
-    <div class="key-pressed">{{ lastKeyPressed }}</div>
+  <div class="key-pressed-wrapper">
+    <span class="key-pressed-label">Last Key Pressed:</span>
+    <span class="key-pressed">{{ lastKeyPressed || '-' }}</span>
   </div>
 </template>
 
@@ -26,13 +26,13 @@ onUnmounted(() => {
 <style scoped>
 .key-pressed-label {
   font-size: 1.5rem;
-  font-weight: bold;
   text-align: center;
 }
 
 .key-pressed {
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
+  margin-left: 10px;
 }
 </style>

@@ -2,30 +2,38 @@
 import TimeInput from './components/TimeInput.vue'
 import FormatSwitcher from '@/components/FormatSwitcher.vue'
 import KeyPushedTracker from '@/components/KeyPushedTracker.vue'
+import TimeToSave from '@/components/TimeToSave.vue'
 </script>
 
 <template>
-  <main>
-    <KeyPushedTracker class="key-pushed-tracker" />
+  <header>
+    <TimeToSave />
     <FormatSwitcher class="format-switcher" />
+    <KeyPushedTracker class="key-pushed-tracker" />
+  </header>
+  <main>
     <TimeInput />
   </main>
 </template>
 
 <style scoped>
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  column-gap: 20px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  height: 15vh;
+}
 main {
-  height: 100vh;
-  width: 100vw;
+  height: 85vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   flex-direction: column;
-}
-.format-switcher {
-  margin-top: 15px;
-}
-.key-pushed-tracker {
-  margin-bottom: 15px;
 }
 </style>

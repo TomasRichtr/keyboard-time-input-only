@@ -16,7 +16,7 @@ const { setTimeFormat } = timeFormatStore
       @click="setTimeFormat(TimeFormat.H24)"
       >HH:mm</span
     >
-    <span>/</span>
+    <span> / </span>
     <span
       class="format-switcher__opt"
       :class="{ active: timeFormat === TimeFormat.H12 }"
@@ -28,10 +28,8 @@ const { setTimeFormat } = timeFormatStore
 
 <style scoped>
 .format-switcher {
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
   cursor: pointer;
   font-size: 1.5rem;
 }
@@ -41,5 +39,6 @@ const { setTimeFormat } = timeFormatStore
 }
 .active {
   font-weight: bold;
+  font-size: 2rem;
 }
 </style>

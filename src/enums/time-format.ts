@@ -4,6 +4,6 @@ export enum TimeFormat {
 }
 
 export enum TimePlaceholder {
-  H12 = '--:-- --',
+  H12 = '--:-- aa',
   H24 = '--:--'
 }
