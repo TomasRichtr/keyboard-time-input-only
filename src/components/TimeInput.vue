@@ -28,7 +28,6 @@ const userInput = ref('')
 const userInputFocus = ref(false)
 const previousInput = ref('')
 
-// Function to validate and format input based on the time format
 const validateAndFormatInput = (input: string) => {
   if (input.length < previousInput.value.length) {
     previousInput.value = input
