@@ -1,5 +1,6 @@
 <template>
-  <div class="input-wrapper" :class="{ 'input-wrapper-focus': userInputFocus }">
+  <label class="input-wrapper" :class="{ 'input-wrapper-focus': userInputFocus }">
+    <span class="label">time:</span>
     <div class="custom-placeholder" v-html="displayPlaceholder" ref="timeInputPlaceholder" />
     <input
       class="monospace-input"
@@ -8,7 +9,7 @@
       @blur="setAmPm"
       @focus="userInputFocus = true"
     />
-  </div>
+  </label>
 </template>
 
 <script setup lang="ts">
@@ -130,11 +131,11 @@ const alignInputWidthWithPlaceholder = () => {
 .input-wrapper {
   position: relative;
   height: 50px;
-  padding: 10px;
+  padding: 10px 10px 0px 10px;
   display: flex;
   justify-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-bottom: 1px solid gray;
 }
 .input-wrapper-focus {
   outline: 2px black;
@@ -171,5 +172,12 @@ const alignInputWidthWithPlaceholder = () => {
   justify-content: center;
   justify-items: center;
   align-items: center;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  top: -5px;
+  font-style: italic;
 }
 </style>
