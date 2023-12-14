@@ -25,10 +25,9 @@ header {
   column-gap: 20px;
   border-bottom: 1px solid #ccc;
   padding: 10px;
-  height: 15vh;
+  height: fit-content;
 }
 main {
-  height: 85vh;
   width: 100%;
   display: flex;
   justify-content: center;
