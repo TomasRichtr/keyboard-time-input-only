@@ -6,7 +6,7 @@ import { TimeFormat } from '@/enums/time-format'
 export const useTimeInput = defineStore('timeInput', () => {
   const timeToSave = ref('')
   const { timeFormat } = storeToRefs(useTimeFormat())
-  const setTimeToSave = (time12h) => {
+  const setTimeToSave = (time12h: string) => {
     if (timeFormat.value === TimeFormat.H24) {
       timeToSave.value = time12h
       return
