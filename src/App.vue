@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TimeInput from './components/TimeInput.vue'
 import FormatSwitcher from '@/components/FormatSwitcher.vue'
-import KeyPushedTracker from '@/components/KeyPushedTracker.vue'
+import KeyPushedTracker from '@/components/KeyPushTracker.vue'
 import TimeToSave from '@/components/TimeToSave.vue'
 </script>
 

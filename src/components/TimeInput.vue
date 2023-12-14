@@ -26,7 +26,7 @@ const userInputFocus = ref(false)
 let previousInput = ''
 
 // Function to validate and format input based on the time format
-const validateAndFormatInput = (input) => {
+const validateAndFormatInput = (input: string) => {
   if (input.length < previousInput.length) {
     // User is deleting characters
     previousInput = input

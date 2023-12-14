@@ -13,7 +13,7 @@ export const useTimeInput = defineStore('timeInput', () => {
     }
     // Extract hours, minutes and the AM/PM indicator
     const [time, modifier] = time12h.split(' ')
-    let [hours, minutes] = time.split(':')
+    let [hours, minutes]: number[] | string[] = time.split(':')
 
     // Convert string hours and minutes to numbers
     hours = parseInt(hours, 10)
