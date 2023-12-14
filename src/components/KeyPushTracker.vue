@@ -33,6 +33,6 @@ onUnmounted(() => {
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  margin-left: 10px;
+  margin-left: 1rem;
 }
 </style>

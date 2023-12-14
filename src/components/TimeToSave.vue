@@ -17,7 +17,7 @@ const { timeToSave } = storeToRefs(useTimeInput())
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  margin-left: 10px;
+  margin-left: 2rem;
 }
 .saved-value-label {
   font-size: 1.5rem;

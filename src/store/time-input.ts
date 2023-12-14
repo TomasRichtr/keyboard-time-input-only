@@ -1,38 +1,27 @@
 import { defineStore, storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useTimeFormat } from '@/store/time-format'
-import { TimeFormat } from '@/enums/time-format'
+import { PartOfDay, TimeFormat } from '@/enums/time-format'
 
 export const useTimeInput = defineStore('timeInput', () => {
   const timeToSave = ref('')
   const { timeFormat } = storeToRefs(useTimeFormat())
-  const setTimeToSave = (time12h: string) => {
+  const setTimeToSave = (timeString: string) => {
     if (timeFormat.value === TimeFormat.H24) {
-      timeToSave.value = time12h
+      timeToSave.value = timeString
       return
     }
-    // Extract hours, minutes and the AM/PM indicator
-    const [time, modifier] = time12h.split(' ')
+
+    const [time, modifier] = timeString.split(' ')
     let [hours, minutes]: number[] | string[] = time.split(':')
 
-    // Convert string hours and minutes to numbers
     hours = parseInt(hours, 10)
     minutes = parseInt(minutes, 10)
 
-    // Handle midnight
-    if (hours === 12) {
-      hours = 0
-    }
+    if (hours === 12) hours = 0
+    if (modifier?.toLowerCase() === PartOfDay.PM) hours = hours + 12
+    if (hours < 10) hours = '0' + hours
 
-    // Convert to 24-hour time if it's PM
-    if (modifier?.toLowerCase() === 'pm') {
-      hours = hours + 12
-    }
-
-    // Ensure hours are two digits
-    if (hours < 10) {
-      hours = '0' + hours
-    }
     if (!hours || !minutes) {
       timeToSave.value = ''
       return

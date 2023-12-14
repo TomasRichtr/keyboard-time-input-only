@@ -21,10 +21,10 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 20px;
-  column-gap: 20px;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
+  margin-bottom: 2rem;
+  row-gap: 1rem;
+  border-bottom: 2px solid gray;
+  padding: 2rem;
   height: fit-content;
 }
 main {

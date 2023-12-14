@@ -7,3 +7,8 @@ export enum TimePlaceholder {
   H12 = '--:-- aa',
   H24 = '--:--'
 }
+
+export enum PartOfDay {
+  AM = 'am',
+  PM = 'pm'
+}

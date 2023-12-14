@@ -1,15 +1,17 @@
 <template>
-  <label class="input-wrapper" :class="{ 'input-wrapper-focus': userInputFocus }">
-    <span class="label">time:</span>
-    <div class="custom-placeholder" v-html="displayPlaceholder" ref="timeInputPlaceholder" />
-    <input
-      class="monospace-input"
-      v-model="userInput"
-      ref="timeInput"
-      @blur="setAmPm"
-      @focus="userInputFocus = true"
-    />
-  </label>
+  <div>
+    <label class="label">time:</label>
+    <span class="input-wrapper" :class="{ 'input-wrapper-focus': userInputFocus }">
+      <span class="custom-placeholder" v-html="displayPlaceholder" ref="timeInputPlaceholder" />
+      <input
+        class="monospace-input"
+        v-model="userInput"
+        ref="timeInput"
+        @blur="setAmPm"
+        @focus="userInputFocus = true"
+      />
+    </span>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -24,24 +26,20 @@ const { setTimeToSave } = useTimeInput()
 
 const userInput = ref('')
 const userInputFocus = ref(false)
-let previousInput = ''
+const previousInput = ref('')
 
 // Function to validate and format input based on the time format
 const validateAndFormatInput = (input: string) => {
-  if (input.length < previousInput.length) {
-    // User is deleting characters
-    previousInput = input
+  if (input.length < previousInput.value.length) {
+    previousInput.value = input
     return input
   }
 
-  // Remove all non-numeric characters
   const numbersOnly = input.replace(/[^\d]/g, '')
 
-  // Extract hours and minutes
   let hours = numbersOnly.substring(0, 2)
   let minutes = numbersOnly.substring(2, 4)
 
-  // Validate and format hours
   if (hours.length === 2) {
     let maxHours = timeFormat.value === TimeFormat.H24 ? 23 : 12
     hours = Math.min(parseInt(hours) || 0, maxHours)
@@ -49,14 +47,12 @@ const validateAndFormatInput = (input: string) => {
       .padStart(2, '0')
   }
 
-  // Validate and format minutes
   if (minutes.length === 2) {
     minutes = Math.min(parseInt(minutes) || 0, 59)
       .toString()
       .padStart(2, '0')
   }
 
-  // Combine hours and minutes
   let formatted = hours
   if (hours.length === 2 && minutes.length > 0) {
     formatted += `:${minutes}`
@@ -70,7 +66,7 @@ const validateAndFormatInput = (input: string) => {
     }
   }
 
-  previousInput = formatted
+  previousInput.value = formatted
   return formatted
 }
 
@@ -121,36 +117,27 @@ const setAmPm = () => {
 const timeInputPlaceholder = ref<HTMLDivElement>()
 
 const alignInputWidthWithPlaceholder = () => {
-  if (!timeInput.value) return
+  if (!timeInput.value || !timeInputPlaceholder.value) return
 
   timeInput.value.style.width = `${timeInputPlaceholder.value?.clientWidth}px`
+  timeInputPlaceholder.value.style.height = `${timeInput.value?.clientHeight}px`
 }
 </script>
 
 <style scoped>
 .input-wrapper {
   position: relative;
-  height: 50px;
-  padding: 10px 10px 0px 10px;
+  padding: 0.5rem;
   display: flex;
   justify-items: center;
   justify-content: center;
   border-bottom: 1px solid gray;
 }
-.input-wrapper-focus {
-  outline: 2px black;
-}
 
 .monospace-input {
   font-family: 'Courier New', Courier, monospace;
-  height: 50px;
   font-size: 2rem;
-  text-align: left;
-  border-radius: 10px;
   background-color: transparent;
-  top: 0;
-  left: 0;
-  width: 150px;
   border: none;
 }
 .monospace-input:focus {
@@ -161,23 +148,17 @@ const alignInputWidthWithPlaceholder = () => {
 .custom-placeholder {
   position: absolute;
   top: 0;
-  height: 50px;
-  padding-top: 10px;
+  padding-top: 0.5rem;
   font-size: 2rem;
   font-family: 'Courier New', Courier, monospace;
   color: #aaa;
   pointer-events: none;
   white-space: pre; /* Preserve spaces and layout */
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
 }
 
 .label {
-  position: absolute;
-  left: 0;
-  top: -5px;
   font-style: italic;
+  text-align: left;
+  width: 100%;
 }
 </style>
