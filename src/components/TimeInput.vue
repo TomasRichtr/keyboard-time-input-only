@@ -131,14 +131,13 @@ const alignInputWidthWithPlaceholder = () => {
   position: relative;
   height: 50px;
   padding: 10px;
-  border: 1px solid gray;
   display: flex;
   justify-items: center;
   justify-content: center;
   border-radius: 10px;
 }
 .input-wrapper-focus {
-  border: 4px solid black;
+  outline: 2px black;
 }
 
 .monospace-input {
