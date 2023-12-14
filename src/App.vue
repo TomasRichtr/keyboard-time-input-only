@@ -8,8 +8,8 @@ import TimeToSave from '@/components/TimeToSave.vue'
 <template>
   <header>
     <TimeToSave />
-    <FormatSwitcher class="format-switcher" />
     <KeyPushedTracker class="key-pushed-tracker" />
+    <FormatSwitcher class="format-switcher" />
   </header>
   <main>
     <TimeInput />
